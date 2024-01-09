@@ -25,8 +25,6 @@ export default class Title{
     }
 
     loadTitleImg(){
-        //document.querySelector(".container").innerHTML = ""
-        console.log("a");
         document.querySelector("#poster").src = "https://bgs.jedlik.eu/swimages/films/1.jpg"
     }
 }
