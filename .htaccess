@@ -1,0 +1,8 @@
+<ifModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /12a/StarWars4
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /12a/StarWars4/index.html [L]
+</ifModule>

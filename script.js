@@ -3,7 +3,7 @@
 import Title from "./title.js";
 
 // default url
-const BASE_URL = '/12a/StarWars4New';
+const BASE_URL = '/12a/StarWars4';
 // oldalak helye:
 const rootDiv = document.querySelector('#main');
 // nav-ok:
