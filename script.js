@@ -1,6 +1,7 @@
 //https://bgs.jedlik.eu/swapi/api/films/1
 
 import Title from "./title.js";
+import ByPlanet from "./planets.js";
 
 // default url
 const BASE_URL = '/12a/StarWars4';
@@ -13,7 +14,7 @@ const navs = document.querySelectorAll('a[data-href]');
 //route-ok
 const routes = {
     '/'         : {html : './home.html', code : Title},
-    '/planets' : {html : "./planets.html", code: null},
+    '/planets' : {html : "./planets.html", code: ByPlanet},
     '/characters' : {html : "./characters.html", code: null},
     '/ships' : {html : "./ships.html", code: null},
     '/404' : {html : './404.html', code : null}
