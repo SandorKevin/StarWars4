@@ -19,6 +19,8 @@ export default class Title{
 
         setTimeout(() => {
             this.loadTitleImg()
+            document.querySelector("#relYear").innerHTML = `Release Year: ${p[0].release_date}`
+            document.querySelector("#infoDiv").innerHTML = `Director: ${p[0].director}, Producers: ${p[0].producer}`
           }, "60000");  
     }
 
