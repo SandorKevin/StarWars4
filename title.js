@@ -19,12 +19,12 @@ export default class Title{
 
         setTimeout(() => {
             this.loadTitleImg()
+            document.querySelector("#relYear").innerHTML = `Release Year: ${p[0].release_date}`
+            document.querySelector("#infoDiv").innerHTML = `Director: ${p[0].director}, Producers: ${p[0].producer}`
           }, "60000");  
     }
 
     loadTitleImg(){
-        //document.querySelector(".container").innerHTML = ""
-        console.log("a");
         document.querySelector("#poster").src = "https://bgs.jedlik.eu/swimages/films/1.jpg"
     }
 }
