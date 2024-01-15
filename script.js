@@ -1,10 +1,10 @@
 //https://bgs.jedlik.eu/swapi/api/films/1
 
-import Title from "./title.js";
-import ByPlanet from "./planets.js";
+import Title from "./js/title.js";
+import ByPlanet from "./js/planets.js";
 
 // default url
-const BASE_URL = '/12a/StarWars4';
+const BASE_URL = '/Web/StarWars4';
 // oldalak helye:
 const rootDiv = document.querySelector('#main');
 // nav-ok:
@@ -13,11 +13,11 @@ const navs = document.querySelectorAll('a[data-href]');
 
 //route-ok
 const routes = {
-    '/'         : {html : './home.html', code : Title},
-    '/planets' : {html : "./planets.html", code: ByPlanet},
-    '/characters' : {html : "./characters.html", code: null},
-    '/ships' : {html : "./ships.html", code: null},
-    '/404' : {html : './404.html', code : null}
+    '/'         : {html : './pages/home.html', code : Title},
+    '/planets' : {html : "./pages/planets.html", code: ByPlanet},
+    '/characters' : {html : "./pages/characters.html", code: null},
+    '/ships' : {html : "./pages/ships.html", code: null},
+    '/404' : {html : './pages/404.html', code : null}
 }
 
 // oldalak betöltése
