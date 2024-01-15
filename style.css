@@ -73,13 +73,14 @@ body {
     position: fixed;
     height: 100%;
     overflow: auto;
+    font-weight: bolder;
   }
   
   .sidebar a {
     display: block;
     color: yellow;
-    padding: 16px;
-    text-decoration: none;
+    padding: 14px;
+    text-decoration:none;
   }
    
   .sidebar a.active {
