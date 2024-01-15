@@ -85,3 +85,16 @@ navs.forEach(nav =>{
     nav.addEventListener('click',onNavClick);
 })
 
+function SideBarSetActive(){
+    const sidebarlinks = document.querySelectorAll(".sidebarlink");
+    for (var i = 0; i < sidebarlinks.length; i++) {
+    sidebarlinks[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+}
+
+SideBarSetActive()
+
