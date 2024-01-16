@@ -2,6 +2,8 @@ export default class Ships{
     constructor(){
         this.loadShips()
         this.loadVehicles()
+        this.ships = []
+        this.vehicles = []
     }
 
     async loadShips(){
@@ -31,6 +33,8 @@ export default class Ships{
     }
 
     async showShips(a) {
+        this.ships = a
+        
         const ShipIds = [2,3,5,9,10,11,12,13]
         let id = 0
         const imgRow = document.querySelector(".imgRow")
@@ -48,6 +52,8 @@ export default class Ships{
     }
 
     async showVehicles(a) {
+        this.vehicles = a
+        
         const VehIds = [4,6,7,8]
         let id = 0
         const imgRow = document.querySelector(".imgRow")
@@ -55,7 +61,7 @@ export default class Ships{
         a.forEach(p => {
         imgs += `
         <div class="col-12 col-md-3 m-3">
-            <img src="https://bgs.jedlik.eu/swimages/vehicles/${VehIds[id]}.jpg" class="img w-100 h-100 ships" id="${p.name}" style="border: solid yellow 1px;"">
+            <img src="https://bgs.jedlik.eu/swimages/vehicles/${VehIds[id]}.jpg" class="img w-100 h-100 ships vehicles" id="${p.name}" style="border: solid yellow 1px;"">
             <p class="text-center text-warning h6">${p.name}</p>
         </div>
         `
@@ -75,8 +81,27 @@ export default class Ships{
 
     async ShowVehicleData(e){
         let shiph1 =  document.querySelector("#shipH1")
+        let dataDiv = document.querySelector("#dataDiv")
+        let isStarship = true
         shiph1.innerHTML = e.target.id
-        document.querySelector("#shipH1").style = "border-bottom: solid orange 5px;"
-        document.querySelector("#dataDiv").style = "border: solid orange 5px"
+        shiph1.style = "border-bottom: solid orange 5px;"
+        dataDiv.style = "border: solid orange 5px"
+        let theChosenOne;
+        if(e.target.classList[4] == "vehicles"){
+            this.vehicles.forEach(v => {
+                if(v.name == e.target.id){
+                    theChosenOne = v;
+                    isStarship = false
+                }
+            })
+        } else{
+            this.ships.forEach(s => {
+                if(s.name == e.target.id){
+                    theChosenOne = s;
+                }
+            })
+        }
+        console.log(theChosenOne);
+        console.log(isStarship);
     }
 }
