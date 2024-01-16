@@ -5,7 +5,7 @@ import ByPlanet from "./js/planets.js";
 import Ships from "./js/ships.js";
 
 // default url
-const BASE_URL = '/Web/StarWars4';
+const BASE_URL = '/12a/StarWars4';
 // oldalak helye:
 const rootDiv = document.querySelector('#main');
 // nav-ok:
