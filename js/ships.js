@@ -42,6 +42,7 @@ export default class Ships{
         a.forEach(p => {
         imgs += `
         <div class="col-12 col-md-3 m-3">
+            <div class="overlay"></div>
             <img src="https://bgs.jedlik.eu/swimages/starships/${ShipIds[id]}.jpg" class="img w-100 h-100 ships" id="${p.name}" style="border: solid yellow 1px;"">
             <p class="text-center text-warning">${p.name}</p>
         </div>
@@ -61,6 +62,7 @@ export default class Ships{
         a.forEach(p => {
         imgs += `
         <div class="col-12 col-md-3 m-3">
+            <div class="overlay"></div>
             <img src="https://bgs.jedlik.eu/swimages/vehicles/${VehIds[id]}.jpg" class="img w-100 h-100 ships vehicles" id="${p.name}" style="border: solid yellow 1px;"">
             <p class="text-center text-warning h6">${p.name}</p>
         </div>
@@ -82,10 +84,11 @@ export default class Ships{
     async ShowVehicleData(e){
         let shiph1 =  document.querySelector("#shipH1")
         let dataDiv = document.querySelector("#dataDiv")
+        let pilotId = 0
         let isStarship = true
         shiph1.innerHTML = e.target.id
         shiph1.style = "border-bottom: solid orange 5px;"
-        dataDiv.style = "border: solid orange 5px"
+        document.querySelector("#dataShowDiv").style = "border: solid orange 5px"
         let theChosenOne;
         if(e.target.classList[4] == "vehicles"){
             this.vehicles.forEach(v => {
@@ -101,7 +104,36 @@ export default class Ships{
                 }
             })
         }
-        console.log(theChosenOne);
-        console.log(isStarship);
-    }
+        let data = ""
+        
+        if(isStarship){
+            data += `<h1 class="text-center text-warning">Starship</h1>`
+            data += `<p class="text-warning mt-3">Class: ${theChosenOne.starship_class}</p>`
+        } else{
+            data += `<h1 class="text-center text-warning">Vehicle</h1>`
+            data += `<p class="text-warning mt-3">Class: ${theChosenOne.vehicle_class}</p>`
+        }
+        data += `<p class="text-warning mt-3">Modell: ${theChosenOne.model}</p>`
+        data += `<p class="text-warning mt-3">Manufacturer: ${theChosenOne.manufacturer}</p>`
+        data += `<p class="text-warning mt-3">Cost in Credit: ${theChosenOne.cost_in_credits}</p>`
+        data += `<p class="text-warning mt-3">Lenght: ${theChosenOne.length} m</p>`
+        data += `<p class="text-warning mt-3">Max atmosphering speed: ${theChosenOne.max_atmosphering_speed}</p>`
+        data += `<p class="text-warning mt-3">Crew: ${theChosenOne.crew}</p>`
+        data += `<p class="text-warning mt-3">Passengers: ${theChosenOne.passengers}</p>`
+        data += `<p class="text-warning mt-3">Cargo capacity: ${theChosenOne.cargo_capacity}</p>`
+        data += `<p class="text-warning mt-3">Consumables: ${theChosenOne.consumables}</p>`
+
+        if(isStarship){
+            data += `<p class="text-warning mt-3">Hyperdrive Rating: ${theChosenOne.hyperdrive_rating}</p>`
+            data += `<p class="text-warning mt-3">MGLT: ${theChosenOne.MGLT}</p>`
+        }
+
+        if(theChosenOne.pilots.length == 0){
+            data += `<p class="text-warning mt-3">Pilots: unknown</p>`
+        } else{
+            data += `<p class="text-warning mt-3">Pilots: ${theChosenOne.pilots}</p>` //itt kell bővíteni
+        }
+
+        dataDiv.innerHTML = data
+        }  
 }

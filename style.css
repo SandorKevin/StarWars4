@@ -114,3 +114,7 @@ body {
       float: none;
     }
   }
+
+  .ships:hover{
+    transform: scale(1.1);
+  }
