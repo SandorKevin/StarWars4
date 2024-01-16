@@ -18,7 +18,7 @@ export default class Ships{
     }
 
     async loadVehicles(){
-        //"starships":["2","3","5","9","10","11","12","13"],"vehicles":["4","6","7","8"]
+        //"vehicles":["4","6","7","8"]
         const response = await fetch('https://bgs.jedlik.eu/swapi/api/group/vehicles?ids=4,6,7,8', {
                 method: 'GET',
                 headers: {
