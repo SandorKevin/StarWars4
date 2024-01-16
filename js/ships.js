@@ -56,7 +56,7 @@ export default class Ships{
         imgs += `
         <div class="col-12 col-md-3 m-3">
             <img src="https://bgs.jedlik.eu/swimages/vehicles/${VehIds[id]}.jpg" class="img w-100 h-100 ships" id="${p.name}" style="border: solid yellow 1px;"">
-            <p class="text-center text-warning">${p.name}</p>
+            <p class="text-center text-warning h6">${p.name}</p>
         </div>
         `
         id++
@@ -68,10 +68,15 @@ export default class Ships{
         let ships = document.querySelectorAll(".ships")
         ships.forEach(s => {
             s.addEventListener("click", (e)=>{
-                document.querySelector("#shipH1").innerHTML = e.target.id
-                document.querySelector("#shipH1").style = "border-bottom: solid orange 5px;"
-                document.querySelector("#dataDiv").style = "border: solid orange 5px"
+                this.ShowVehicleData(e)
             })
         })
+    }
+
+    async ShowVehicleData(e){
+        let shiph1 =  document.querySelector("#shipH1")
+        shiph1.innerHTML = e.target.id
+        document.querySelector("#shipH1").style = "border-bottom: solid orange 5px;"
+        document.querySelector("#dataDiv").style = "border: solid orange 5px"
     }
 }
