@@ -1,5 +1,6 @@
 export default class Title{
     constructor(){
+        document.body.style.overflow = "hidden"
         this.loadTitle()
     }
 
@@ -12,16 +13,17 @@ export default class Title{
                 }
         });
         let p =  await response.json();
-        console.log(p)
         document.querySelector("#episodeId").innerHTML = `Episode ${p[0].episode_id}`
         document.querySelector("#titleId").innerHTML = p[0].title
         document.querySelector("#opening_crawl").innerHTML = p[0].opening_crawl
 
         setTimeout(() => {
             this.loadTitleImg()
+            document.body.style.overflow = "scroll"
+            document.querySelector(".star-wars").innerHTML = ""
             document.querySelector("#relYear").innerHTML = `Release Year: ${p[0].release_date}`
             document.querySelector("#infoDiv").innerHTML = `Director: ${p[0].director}, Producers: ${p[0].producer}`
-          }, "60000");  
+          }, "60000");  //60000
     }
 
     loadTitleImg(){

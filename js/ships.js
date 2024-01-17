@@ -1,5 +1,6 @@
 export default class Ships{
     constructor(){
+        document.body.style.overflow = "scroll"
         this.loadShips()
         this.loadVehicles()
         this.ships = []
@@ -62,7 +63,6 @@ export default class Ships{
         a.forEach(p => {
         imgs += `
         <div class="col-12 col-md-3 m-3">
-            <div class="overlay"></div>
             <img src="https://bgs.jedlik.eu/swimages/vehicles/${VehIds[id]}.jpg" class="img w-100 h-100 ships vehicles" id="${p.name}" style="border: solid yellow 1px;"">
             <p class="text-center text-warning h6">${p.name}</p>
         </div>
@@ -72,7 +72,7 @@ export default class Ships{
         imgRow.innerHTML += imgs
     }
 
-    async MakeImagesClickable() {
+    MakeImagesClickable() {
         let ships = document.querySelectorAll(".ships")
         ships.forEach(s => {
             s.addEventListener("click", (e)=>{
@@ -82,9 +82,9 @@ export default class Ships{
     }
 
     async ShowVehicleData(e){
+        document.querySelector(".pilotsRow").innerHTML = ""
         let shiph1 =  document.querySelector("#shipH1")
         let dataDiv = document.querySelector("#dataDiv")
-        let pilotId = 0
         let isStarship = true
         shiph1.innerHTML = e.target.id
         shiph1.style = "border-bottom: solid orange 5px;"
@@ -104,6 +104,7 @@ export default class Ships{
                 }
             })
         }
+
         let data = ""
         
         if(isStarship){
@@ -126,14 +127,53 @@ export default class Ships{
         if(isStarship){
             data += `<p class="text-warning mt-3">Hyperdrive Rating: ${theChosenOne.hyperdrive_rating}</p>`
             data += `<p class="text-warning mt-3">MGLT: ${theChosenOne.MGLT}</p>`
+           
         }
 
         if(theChosenOne.pilots.length == 0){
             data += `<p class="text-warning mt-3">Pilots: unknown</p>`
         } else{
-            data += `<p class="text-warning mt-3">Pilots: ${theChosenOne.pilots}</p>` //itt kell bővíteni
+            data += `<p class="text-warning mt-3 mb-0">Pilots:</p>`
+            data += this.showPilots(theChosenOne.pilots)
         }
 
         dataDiv.innerHTML = data
-        }  
+    }
+    
+    async showPilots(pilotIdList){
+        const pilotRow = document.querySelector(".pilotsRow")
+        pilotRow.innerHTML = ""
+
+        let pilotsData = ""
+        let pilotIds = ""
+        let imgWidth = 100
+ 
+        pilotIdList.forEach(id=>{
+            pilotIds += `${id},`
+        })
+        pilotIds.slice(0, pilotIds.length-1)
+
+        const response = await fetch(`https://bgs.jedlik.eu/swapi/api/group/people?ids=${pilotIds}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+        });
+        let pilots =  await response.json();
+
+        if(pilotIdList.length == 1){
+            imgWidth = 25
+        }
+
+        for (let id = 0; id < pilots.length; id++) {
+            pilotsData += `
+            <div class="col-${12 / pilotIdList.length}">
+            <a href="http://localhost/12a/StarWars4/characters">
+            <img src="https://bgs.jedlik.eu/swimages/characters/${pilotIdList[id]}.jpg" class="img w-${imgWidth} h-100" title="${pilots[id].name}">
+            </a>
+            </div>`
+        }
+        console.log(pilotsData);
+        document.querySelector(".pilotsRow").innerHTML = pilotsData
+    }
 }

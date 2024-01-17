@@ -1,5 +1,6 @@
 export default class ByPlanet{
     constructor() {
+        document.body.style.overflow = "scroll"
         this.showSelect().then(() => { this.listUnivercities() });
         document.querySelector('.btn').addEventListener('click', this.listUnivercities.bind(this));
     }
