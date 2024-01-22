@@ -7,6 +7,7 @@ export default class Ships{
         this.vehicles = []
     }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async loadShips(){
         //"starships":["2","3","5","9","10","11","12","13"],"vehicles":["4","6","7","8"] -- 12db
         const response = await fetch('https://bgs.jedlik.eu/swapi/api/group/starships?ids=2,3,5,9,10,11,12,13', {
@@ -20,6 +21,7 @@ export default class Ships{
         this.MakeImagesClickable()
     }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async loadVehicles(){
         //"vehicles":["4","6","7","8"]
         const response = await fetch('https://bgs.jedlik.eu/swapi/api/group/vehicles?ids=4,6,7,8', {
@@ -33,6 +35,7 @@ export default class Ships{
         this.MakeImagesClickable()
     }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async showShips(a) {
         this.ships = a
         
@@ -53,6 +56,7 @@ export default class Ships{
         imgRow.innerHTML += imgs
     }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async showVehicles(a) {
         this.vehicles = a
         
@@ -82,6 +86,7 @@ export default class Ships{
         })
     }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async ShowVehicleData(e){
         document.querySelector(".pilotsRow").innerHTML = ""
         let shiph1 =  document.querySelector("#shipH1")
@@ -91,6 +96,7 @@ export default class Ships{
         shiph1.style = "border-bottom: solid orange 5px;"
         document.querySelector("#dataShowDiv").style = "border: solid orange 5px"
         let theChosenOne;
+
         if(e.target.classList[4] == "vehicles"){
             this.vehicles.forEach(v => {
                 if(v.name == e.target.id){
@@ -106,7 +112,16 @@ export default class Ships{
             })
         }
 
+        const response = await fetch(`https://bgs.jedlik.eu/swapi/api/group/films?ids=${theChosenOne.films}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        let films = await response.json();
+
         let data = ""
+        let filmsData = ""
         
         if(isStarship){
             data += `<h1 class="text-center text-warning">Starship</h1>`
@@ -124,6 +139,12 @@ export default class Ships{
         data += `<p class="text-warning mt-3">Passengers: ${theChosenOne.passengers}</p>`
         data += `<p class="text-warning mt-3">Cargo capacity: ${theChosenOne.cargo_capacity}</p>`
         data += `<p class="text-warning mt-3">Consumables: ${theChosenOne.consumables}</p>`
+        
+        films.forEach(f =>{
+            filmsData += `${f.title}, `
+        })
+
+        data += `<p class="text-warning mt-3">Filmek: ${filmsData.slice(0, -2)}</p>`
 
         if(isStarship){
             data += `<p class="text-warning mt-3">Hyperdrive Rating: ${theChosenOne.hyperdrive_rating}</p>`
@@ -141,6 +162,7 @@ export default class Ships{
         dataDiv.innerHTML = data
     }
     
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async showPilots(pilotIdList){
         const pilotRow = document.querySelector(".pilotsRow")
         pilotRow.innerHTML = ""
@@ -161,6 +183,7 @@ export default class Ships{
                 }
         });
         let pilots =  await response.json();
+        
 
         if(pilotIdList.length == 1){
             imgWidth = 25
@@ -174,7 +197,6 @@ export default class Ships{
             </a>
             </div>`
         }
-        console.log(pilotsData);
         document.querySelector(".pilotsRow").innerHTML = pilotsData
     }
 }
