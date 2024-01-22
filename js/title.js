@@ -19,7 +19,7 @@ export default class Title{
 
         setTimeout(() => {
             this.loadTitleImg()
-            document.body.style.overflow = "scroll"
+            document.body.style.overflow = "hidden scroll"
             document.querySelector(".star-wars").innerHTML = ""
             document.querySelector("#relYear").innerHTML = `Release Year: ${p[0].release_date}`
             document.querySelector("#infoDiv").innerHTML = `Director: ${p[0].director}, Producers: ${p[0].producer}`
