@@ -1,3 +1,5 @@
+// Méri Levente
+
 export default class Title{
     constructor(){
         document.body.style.overflow = "hidden"
@@ -21,6 +23,7 @@ export default class Title{
             this.loadTitleImg()
             document.body.style.overflow = "hidden scroll"
             document.querySelector(".star-wars").innerHTML = ""
+            document.querySelector("#filmtitle").innerHTML = `${p[0].title}`
             document.querySelector("#relYear").innerHTML = `Release Year: ${p[0].release_date}`
             document.querySelector("#infoDiv").innerHTML = `Director: ${p[0].director}, Producers: ${p[0].producer}`
           }, "60000");  //60000

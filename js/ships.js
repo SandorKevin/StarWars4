@@ -1,3 +1,5 @@
+//Méri Levente
+
 export default class Ships{
     constructor(){
         document.body.style.overflow = "hidden scroll"
