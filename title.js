@@ -1,12 +1,9 @@
 // Méri Levente
 
-export default class Title{
-    constructor(){
-        document.body.style.overflow = "hidden"
-        this.loadTitle()
-    }
+document.body.style.overflow = "hidden"
 
-    async loadTitle(){
+
+async function loadTitle(){
         //this.loadTitleImg()
         const response = await fetch('https://bgs.jedlik.eu/swapi/api/films/1', {
                 method: 'GET',
@@ -20,7 +17,7 @@ export default class Title{
         document.querySelector("#opening_crawl").innerHTML = p[0].opening_crawl
 
         setTimeout(() => {
-            this.loadTitleImg()
+            loadTitleImg()
             document.body.style.overflow = "hidden scroll"
             document.querySelector(".star-wars").innerHTML = ""
             document.querySelector("#filmtitle").innerHTML = `${p[0].title}`
@@ -29,7 +26,8 @@ export default class Title{
           }, "60000");  //60000
     }
 
-    loadTitleImg(){
-        document.querySelector("#poster").src = "https://bgs.jedlik.eu/swimages/films/1.jpg"
-    }
+function loadTitleImg(){
+    document.querySelector("#poster").src = "https://bgs.jedlik.eu/swimages/films/1.jpg"
 }
+
+loadTitle()

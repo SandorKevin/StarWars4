@@ -1,12 +1,8 @@
-export default class ByPlanet{
-    constructor() {
-        document.body.style.overflow = "hidden scroll"
-        this.showSelect().then(() => { this.listUnivercities() });
-        document.querySelector('.btn').addEventListener('click', this.listUnivercities.bind(this));
-    }
-    
+document.body.style.overflow = "hidden scroll"
+showSelect().then(() => { listUnivercities() });
+document.querySelector('.btn').addEventListener('click', listUnivercities.bind(this));
 
-    async showSelect() {
+async function showSelect() {
         const formSelect = document.querySelector('.form-select');
         const response = await fetch('https://bgs.jedlik.eu/swapi/api/planets');
         let planets = await response.json();
@@ -19,7 +15,7 @@ export default class ByPlanet{
         });
     }
 
-    async listUnivercities() {
+async function listUnivercities() {
         const selectedPlanet = document.querySelector('.form-select').value;
         const response = await fetch('https://bgs.jedlik.eu/swapi/api/group/planets?ids=' + selectedPlanet);
         const planets = await response.json();
@@ -54,4 +50,3 @@ export default class ByPlanet{
         });
         table.innerHTML = tr;
     }
-}

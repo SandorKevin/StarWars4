@@ -1,16 +1,13 @@
 //Méri Levente
 
-export default class Ships{
-    constructor(){
-        document.body.style.overflow = "hidden scroll"
-        this.loadShips()
-        this.loadVehicles()
-        this.ships = []
-        this.vehicles = []
-    }
+document.body.style.overflow = "hidden scroll"
+loadShips()
+loadVehicles()
+let ships = []
+let vehicles = []
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    async loadShips(){
+    async function loadShips(){
         //"starships":["2","3","5","9","10","11","12","13"],"vehicles":["4","6","7","8"] -- 12db
         const response = await fetch('https://bgs.jedlik.eu/swapi/api/group/starships?ids=2,3,5,9,10,11,12,13', {
                 method: 'GET',
@@ -19,12 +16,12 @@ export default class Ships{
                 }
         });
         let p =  await response.json();
-        this.showShips(p)
-        this.MakeImagesClickable()
+        showShips(p)
+        MakeImagesClickable()
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    async loadVehicles(){
+    async function loadVehicles(){
         //"vehicles":["4","6","7","8"]
         const response = await fetch('https://bgs.jedlik.eu/swapi/api/group/vehicles?ids=4,6,7,8', {
                 method: 'GET',
@@ -33,13 +30,13 @@ export default class Ships{
                 }
         });
         let p =  await response.json();
-        this.showVehicles(p)
-        this.MakeImagesClickable()
+        showVehicles(p)
+        MakeImagesClickable()
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    async showShips(a) {
-        this.ships = a
+    async function showShips(a) {
+        ships = a
         
         const ShipIds = [2,3,5,9,10,11,12,13]
         let id = 0
@@ -59,8 +56,8 @@ export default class Ships{
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    async showVehicles(a) {
-        this.vehicles = a
+    async function showVehicles(a) {
+        vehicles = a
         
         const VehIds = [4,6,7,8]
         let id = 0
@@ -79,18 +76,18 @@ export default class Ships{
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    MakeImagesClickable() {
+    function MakeImagesClickable() {
         let ships = document.querySelectorAll(".ships")
         ships.forEach(s => {
             s.addEventListener("click", (e)=>{
-                this.ShowVehicleData(e)
+                ShowVehicleData(e)
                 document.querySelector("#dataDiv").scrollIntoView()
             })
         })
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    async ShowVehicleData(e){
+    async function ShowVehicleData(e){
         document.querySelector(".pilotsRow").innerHTML = ""
         let shiph1 =  document.querySelector("#shipH1")
         let dataDiv = document.querySelector("#dataDiv")
@@ -101,14 +98,14 @@ export default class Ships{
         let theChosenOne;
 
         if(e.target.classList[4] == "vehicles"){
-            this.vehicles.forEach(v => {
+            vehicles.forEach(v => {
                 if(v.name == e.target.id){
                     theChosenOne = v;
                     isStarship = false
                 }
             })
         } else{
-            this.ships.forEach(s => {
+            ships.forEach(s => {
                 if(s.name == e.target.id){
                     theChosenOne = s;
                 }
@@ -159,14 +156,14 @@ export default class Ships{
             data += `<p class="text-warning mt-3">Pilots: unknown</p>`
         } else{
             data += `<p class="text-warning mt-3 mb-0">Pilots:</p>`
-            data += this.showPilots(theChosenOne.pilots)
+            data += showPilots(theChosenOne.pilots)
         }
 
         dataDiv.innerHTML = data
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    async showPilots(pilotIdList){
+    async function showPilots(pilotIdList){
         const pilotRow = document.querySelector(".pilotsRow")
         pilotRow.innerHTML = ""
 
@@ -195,11 +192,10 @@ export default class Ships{
         for (let id = 0; id < pilots.length; id++) {
             pilotsData += `
             <div class="col-${12 / pilotIdList.length}">
-            <a href="http://localhost/12a/StarWars4/characters">
+            <a href="characters.html">
             <img src="https://bgs.jedlik.eu/swimages/characters/${pilotIdList[id]}.jpg" class="img w-${imgWidth} h-100" title="${pilots[id].name}">
             </a>
             </div>`
         }
         document.querySelector(".pilotsRow").innerHTML = pilotsData
     }
-}
