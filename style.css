@@ -112,17 +112,17 @@ body {
     }
   }
 
-  /* ships and vehicles oldal */
-  .shipsh1{
+  
+  .titleh1{
     border-bottom: solid 5px orange;
   }
 
-  .ships:hover{
+  .img:hover{
     transform: scale(1.1);
   }
 
   @media screen and (max-width: 1000px) {
-    .ships:hover{
+    .img:hover{
       transform: scale(1);
     }
   }

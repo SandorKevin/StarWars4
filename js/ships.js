@@ -45,7 +45,6 @@ let vehicles = []
         a.forEach(p => {
         imgs += `
         <div class="col-12 col-md-12 col-lg-3 m-3">
-            <div class="overlay"></div>
             <img src="https://bgs.jedlik.eu/swimages/starships/${ShipIds[id]}.jpg" class="img w-100 h-100 ships" id="${p.name}" style="border: solid yellow 1px;"">
             <p class="text-center text-warning">${p.name}</p>
         </div>
@@ -193,7 +192,7 @@ let vehicles = []
             pilotsData += `
             <div class="col-${12 / pilotIdList.length}">
             <a href="characters.html">
-            <img src="https://bgs.jedlik.eu/swimages/characters/${pilotIdList[id]}.jpg" class="img w-${imgWidth} h-100" title="${pilots[id].name}">
+            <img src="https://bgs.jedlik.eu/swimages/characters/${pilotIdList[id]}.jpg" class=" w-${imgWidth} h-100" title="${pilots[id].name}">
             </a>
             </div>`
         }

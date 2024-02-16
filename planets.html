@@ -23,32 +23,25 @@
     </div>
 
     <div id="main">
-        <div class="row mb-4 d-flex justify-content-center">
-            <label class="col-sm-1 col-form-label">Bolygok:</label>
-            <div class="col-sm-3">
-                <select class="form-select">
-                    <option selected value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="4">Three</option>
-                </select>
-            </div>
-            <button class="col-sm-2 btn btn-primary">Keresés</button>
-        </div>
-        <div class="row">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Név</th>
+        <div class="container mt-5">
+            <h1 class="text-warning text-center titleh1">Planets</h1>
+            <div class="row">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="row imgRow">
 
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-xl-12 mt-5" id="dataShowDiv">
+                    <h1 class="text-center text-warning" id="planetH1"></h1>
+                    <div id="dataDiv"></div>
+                    <div class="row planetsRow mt-0"></div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="planets.js" type="module"></script>
+    <script src="/js/planets.js" type="module"></script>
 </body>
 
 </html>
