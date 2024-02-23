@@ -1,0 +1,27 @@
+Star wars oldal tesztforgatókönyv -- Méri Levente, Sándor Kevin, Dremák Olivér (4.csapat) 
+
+PAGE OBJECT MODEL
+
+A képek megjelennek (betöltödnek az adatbázisból):
+	A képeknek van title-je és id-je
+	A képekre kattinva megjelenik egy az adatokat tartalmazó
+	A képekre kattinva megjelennek a hozzájuk tartozó filmek
+
+Járművek oldal:
+	a képek tesztelése úgy, mint a többi oldalon
+	A képekre kattintva megjelennek az adatok, ha van pilóta akkor a pilóta képe is (járművek oldal)
+	Adatokat megjelenítő div megjelenik
+	a jármű neve megjelenik és félköver
+	A pilóta képnek van title-je és rájuk kattintva a karakterek oldal nyílik meg
+	Jó adatok jelennek meg
+	Mobilnézetben a képekre kattintás után az oldal az adatokhoz görget
+	Ha a járműnek nincsen pilótája (unknown pilot) akkor a piloteDiv nem létezik
+
+A navbar megfelelően működik:
+	a linkekre kattintva megnyilnak az oldalak
+	A star wars lógóra kattintva megynitja a youtube-t a Star wars zenéjénél
+
+A title oldalon:
+	jó szöveg jelenik meg
+	ha a szöveg már nincs a képernyőn (animálva van) akkor megjelenik a film poszter
+	nem lehet a title oldalon görgetni, le van tiltva
