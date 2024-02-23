@@ -1,6 +1,7 @@
 Star wars oldal tesztforgatókönyv -- Méri Levente, Sándor Kevin, Dremák Olivér (4.csapat) 
 
 PAGE OBJECT MODEL
+A javascriptel generált elemek tesztelésekor új ablakot kell megnyitni
 
 A képek megjelennek (betöltödnek az adatbázisból):
 	A képeknek van title-je és id-je
