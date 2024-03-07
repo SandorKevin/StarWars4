@@ -46,7 +46,7 @@ let vehicles = []
         imgs += `
         <div class="col-12 col-md-12 col-lg-3 m-3">
             <img src="https://bgs.jedlik.eu/swimages/starships/${ShipIds[id]}.jpg" class="img w-100 h-100 ships" id="${p.name}" style="border: solid yellow 1px;"">
-            <p class="text-center text-warning">${p.name}</p>
+            <p class="text-center text-warning imageTitle">${p.name}</p>
         </div>
         `
         id++
@@ -66,7 +66,7 @@ let vehicles = []
         imgs += `
         <div class="col-12 col-md-12 col-lg-3 m-3">
             <img src="https://bgs.jedlik.eu/swimages/vehicles/${VehIds[id]}.jpg" class="img w-100 h-100 ships vehicles" id="${p.name}" style="border: solid yellow 1px;"">
-            <p class="text-center text-warning h6">${p.name}</p>
+            <p class="text-center text-warning h6 imageTitle">${p.name}</p>
         </div>
         `
         id++
@@ -123,31 +123,31 @@ let vehicles = []
         let filmsData = ""
         
         if(isStarship){
-            data += `<h1 class="text-center text-warning">Starship</h1>`
-            data += `<p class="text-warning mt-3">Class: ${theChosenOne.starship_class}</p>`
+            data += `<h1 class="text-center text-warning typeH1">Starship</h1>`
+            data += `<p class="text-warning mt-3 data">Class: ${theChosenOne.starship_class}</p>`
         } else{
-            data += `<h1 class="text-center text-warning">Vehicle</h1>`
-            data += `<p class="text-warning mt-3">Class: ${theChosenOne.vehicle_class}</p>`
+            data += `<h1 class="text-center text-warning typeH1">Vehicle</h1>`
+            data += `<p class="text-warning mt-3 data">Class: ${theChosenOne.vehicle_class}</p>`
         }
-        data += `<p class="text-warning mt-3">Modell: ${theChosenOne.model}</p>`
-        data += `<p class="text-warning mt-3">Manufacturer: ${theChosenOne.manufacturer}</p>`
-        data += `<p class="text-warning mt-3">Cost in Credit: ${theChosenOne.cost_in_credits}</p>`
-        data += `<p class="text-warning mt-3">Lenght: ${theChosenOne.length} m</p>`
-        data += `<p class="text-warning mt-3">Max atmosphering speed: ${theChosenOne.max_atmosphering_speed}</p>`
-        data += `<p class="text-warning mt-3">Crew: ${theChosenOne.crew}</p>`
-        data += `<p class="text-warning mt-3">Passengers: ${theChosenOne.passengers}</p>`
-        data += `<p class="text-warning mt-3">Cargo capacity: ${theChosenOne.cargo_capacity}</p>`
-        data += `<p class="text-warning mt-3">Consumables: ${theChosenOne.consumables}</p>`
+        data += `<p class="text-warning mt-3 data">Modell: ${theChosenOne.model}</p>`
+        data += `<p class="text-warning mt-3 data">Manufacturer: ${theChosenOne.manufacturer}</p>`
+        data += `<p class="text-warning mt-3 data">Cost in Credit: ${theChosenOne.cost_in_credits}</p>`
+        data += `<p class="text-warning mt-3 data">Lenght: ${theChosenOne.length} m</p>`
+        data += `<p class="text-warning mt-3 data">Max atmosphering speed: ${theChosenOne.max_atmosphering_speed}</p>`
+        data += `<p class="text-warning mt-3 data">Crew: ${theChosenOne.crew}</p>`
+        data += `<p class="text-warning mt-3 data">Passengers: ${theChosenOne.passengers}</p>`
+        data += `<p class="text-warning mt-3 data">Cargo capacity: ${theChosenOne.cargo_capacity}</p>`
+        data += `<p class="text-warning mt-3 data">Consumables: ${theChosenOne.consumables}</p>`
         
         films.forEach(f =>{
             filmsData += `${f.title}, `
         })
 
-        data += `<p class="text-warning mt-3">Filmek: ${filmsData.slice(0, -2)}</p>`
+        data += `<p class="text-warning mt-3 data">Filmek: ${filmsData.slice(0, -2)}</p>`
 
         if(isStarship){
-            data += `<p class="text-warning mt-3">Hyperdrive Rating: ${theChosenOne.hyperdrive_rating}</p>`
-            data += `<p class="text-warning mt-3">MGLT: ${theChosenOne.MGLT}</p>`
+            data += `<p class="text-warning mt-3 data">Hyperdrive Rating: ${theChosenOne.hyperdrive_rating}</p>`
+            data += `<p class="text-warning mt-3 data">MGLT: ${theChosenOne.MGLT}</p>`
            
         }
 
@@ -192,7 +192,7 @@ let vehicles = []
             pilotsData += `
             <div class="col-${12 / pilotIdList.length}">
             <a href="characters.html">
-            <img src="https://bgs.jedlik.eu/swimages/characters/${pilotIdList[id]}.jpg" class=" w-${imgWidth} h-100" title="${pilots[id].name}">
+            <img src="https://bgs.jedlik.eu/swimages/characters/${pilotIdList[id]}.jpg" class=" w-${imgWidth} h-100 pilotImage" title="${pilots[id].name}">
             </a>
             </div>`
         }
